@@ -11,6 +11,7 @@ import os
 
 # prefix = prefixes
 
+# Load Config
 
 def get_prefix(client, message):
     with open('prefixes.json', 'r') as f:
@@ -20,7 +21,7 @@ def get_prefix(client, message):
 
 
 def create_config():
-    # tts.txt file exist check
+    # prefixes.json file exist check
     if not os.path.exists('prefixes.json'):
         (
             open("prefixes.json", 'a', encoding='utf-8').close(),
@@ -32,7 +33,10 @@ def create_config():
 
 
 client = commands.Bot(command_prefix=get_prefix)
-status = cycle(['Bot by Werion', 'Please report bugs', 'Nie łam zasad'])
+status = cycle(['Wersja 0.0.4'])
+
+
+# status = f"{round(client.latency * 1000)}ms"
 
 
 @client.event
@@ -49,7 +53,9 @@ async def change_status():
 
 @client.event
 async def on_member_join(member):
+    # user = client.get_user(member)
     print(f'{member} joined 4FUN.')
+    # await user.send(f'Witaj {member} na serwerze Meweria. Jestem autorskim botem który posłurzy gdybyś miał jakiś problem.')
 
 
 @client.event
@@ -100,9 +106,21 @@ async def _8ball_error(ctx, error):
         await ctx.send(f'`Użycie: 8ball' + ' [pytanie]`')
 
 
-@client.command()
-async def clear(ctx, amount=5):
+@client.command(name="clear", pass_context=True)
+@has_permissions(manage_messages=True)
+async def clear(ctx, amount=0):
     await ctx.channel.purge(limit=amount)
+
+
+@clear.error
+async def clear_error(ctx, error):
+    if isinstance(error, MissingPermissions):
+        # text = "Sorry {}, you do not have permissions to do that!".format(ctx.message.author)
+        await ctx.send('`Panie, pan nie ma uprawnień by użyć tej komendy!`')
+    elif isinstance(error, commands.MissingRequiredArgument):
+        embed = discord.Embed(title="Błąd", description="Nieprawidłowy syntax")
+        embed.add_field(name="Użycie:", value=f"clear [ilość]", inline=False)
+        await ctx.send(embed=embed)
 
 
 @client.command(name="kick", pass_context=True)
@@ -168,10 +186,39 @@ async def about(ctx):
     embed.set_author(name="Werion", )
     # embed.set_thumbnail(url="https://cdn.discordapp.com/avatars/646398082845769759/886b06c4dee4c4d487493c83a79751a3.png")
     embed.add_field(name="Test", value="1234", inline=False)
-    embed.set_footer(text="version 0.0.3")
+    embed.set_footer(text="version 0.0.4")
     await ctx.send(embed=embed)
 
     # await client.send_message(channel, embed=embed)
+
+
+@client.command(name="dm", pass_context=True)
+async def _dm(ctx, *, question):
+    user = client.get_user(240117268745289729)
+    await user.send(f'{ctx.author.mention}: {question}')
+    await ctx.send(f'`Wysłano pytanie do {user}: {question}`')
+
+
+@client.command(name="jd", pass_context=True)
+async def _jd(ctx):
+    await ctx.send(f'JD')
+
+
+@client.command(name="staff_dm", pass_context=True)
+@has_permissions(administrator=True)
+async def _staff_dm(ctx, id=int(), *, question):
+    user = client.get_user(id)
+    await user.send(f'{ctx.author.mention}: {question}')
+    await ctx.send(f'`Wysłano pytanie do {user}: {question}`')
+
+
+@_staff_dm.error
+async def _staff_dm_error(ctx, error):
+    if isinstance(error, MissingPermissions):
+        # text = "Sorry {}, you do not have permissions to do that!".format(ctx.message.author)
+        await ctx.send('Panie, pan nie ma uprawnień by użyć tej komendy!')
+    elif isinstance(error, commands.MissingRequiredArgument):
+        await ctx.send(f'`Użycie: staff_dm' + ' [ID Uzytkownika Discord] [Tekst]`')
 
 
 @client.event
@@ -209,6 +256,24 @@ async def changeprefix(ctx, prefix):
     await ctx.send(f'Zmieniono prefix na {prefix}')
 
 
+# @client.event
+# async def on_message(message):
+# we do not want the bot to reply to itself
+# if message.content.startswith("#dm"):
+# if message.author == client.user:
+#   return
+
+# can be cached...
+# await client.process_commands(message.channel, message.content[3:])
+# discordUser = message
+# await client.process_commands(message)
+# content = message
+# user = client.get_user(discordUser)
+# await user.send(content)
+# me = await client.get_user_info('437289250753347605')
+# await client.send_message(me, "Hello!")
+
+
 if __name__ == '__main__':
     create_config()
-    client.run('you'r token')
+    client.run('NjQ2Mzk4MDgyODQ1NzY5NzU5.XdQjIA.uBnoBGR3-zMXeEGodEV2zu6HqOs')
