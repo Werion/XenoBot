@@ -276,4 +276,4 @@ async def changeprefix(ctx, prefix):
 
 if __name__ == '__main__':
     create_config()
-    client.run('NjQ2Mzk4MDgyODQ1NzY5NzU5.XdQjIA.uBnoBGR3-zMXeEGodEV2zu6HqOs')
+    client.run('')
