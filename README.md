@@ -15,6 +15,3 @@ SOURCE CODE WASN'T UPDATED FOR A WERY LONG TIME. SOME KEY FEATURES MISSING
 
 
 
-Oh wait, there is no source code.
-
-To do: upload the code
