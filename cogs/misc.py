@@ -27,7 +27,7 @@ class Miscellaneous(commands.Cog):
 
     @tasks.loop(seconds=10)
     async def change_status(self):
-        status = cycle(['Wersja 0.0.8'])
+        status = cycle(['Wersja 0.0.9'])
         # status = f"{round(client.latency * 1000)}ms"
         await self.client.change_presence(activity=discord.Game(next(status)))
 
