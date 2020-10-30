@@ -4,6 +4,9 @@ import json
 import os
 from dotenv import load_dotenv
 
+__Author__ = 'Werion'
+__Version__ = 'Beta'
+
 
 # Load Config
 
@@ -83,19 +86,20 @@ async def on_ready():
 async def on_command_error(ctx, error):
     if isinstance(error, commands.CommandNotFound):
         await ctx.send(f'`Nie poznaje tej komędy!`')
+        print(error)
 
 
-@client.event
-async def on_member_join(member):
+#@client.event
+#async def on_member_join(member):
     # user = client.get_user(member)
-    print(f'{member} joined')
+    # print(f'{member} joined')
     # await user.send(f'Witaj {member} na serwerze Meweria. Jestem autorskim botem który posłurzy gdybyś miał jakiś
     # problem.')
 
 
-@client.event
-async def on_member_remove(member):
-    print(f'{member} has left')
+#@client.event
+#async def on_member_remove(member):
+#    print(f'{member} has left')
 
 
 # | Guild prefix add/remove | START ---------------------------------------
@@ -125,6 +129,7 @@ async def on_guild_remove(guild):
 # END ---------------------------------------------------------------------
 # | Change prefix | START -------------------------------------------------
 @client.command()
+@has_permissions(administrator=True)
 async def change_prefix(ctx, prefix):
     with open('prefixes.json', 'r') as f:
         prefixes = json.load(f)
@@ -146,6 +151,28 @@ def path_exist_check():
 
 
 # END ----------------------------------------------------------------------
+# | Disable certain command on certain server (guild) | START --------------
+commandsEnabled = {}
+
+
+@client.event
+async def on_guild_join(guild):
+    commandsEnabled[str(guild.id)] = {}
+    for cmd in client.commands:
+        commandsEnabled[str(guild.id)][cmd.name] = True
+
+
+# @client.command()
+# @has_permissions(administrator=True)
+# async def toggle(ctx, command):
+#    commandsEnabled[str(guild.id)][cmd.name] = not commandsEnabled[str(guild.id)][cmd.name]
+#    await ctx.send(f"{command} command {['disabled', 'enabled'][int()]}")
+
+
+# @toggle.error
+# async def about_error(ctx, error):
+#    await ctx.send(f'`{error}`')
+
 
 # MAIN ---------------------------------------------------------------------
 
@@ -153,4 +180,7 @@ if __name__ == '__main__':
     print("Loading, please wait...")
     load_dotenv()
     path_exist_check()
-    client.run(os.getenv('BOT_TOKEN'))
+    #client.run(os.getenv('BOT_TOKEN'))
+    client.run('NzQ2NzMzOTc2NjAwODM4MjY1.X0EoNQ.YlAWHcdstah6bmm_TCDf3pqJmtk')
+    #
+    # NzQ2NzMzOTc2NjAwODM4MjY1.X0EoNQ.YlAWHcdstah6bmm_TCDf3pqJmtk - test bot
