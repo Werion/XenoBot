@@ -1,6 +1,7 @@
 from discord.ext import commands
 from discord.ext.commands import has_permissions, MissingPermissions
 import random
+import time
 
 
 class Experimental(commands.Cog):
@@ -41,7 +42,12 @@ class Experimental(commands.Cog):
             'Pierdolony syf',
             'Pierdolony sukinsyn',
             'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
-            'UwU'
+            'UwU',
+            'OwO',
+            'Spierdalaj',
+            'Idź poderwać swoją matkę',
+            'Wypierdalaj',
+            '',
         ]
         if uid == 1:
             await ctx.send(f'Request by: {ctx.author.mention}')

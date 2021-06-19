@@ -1,2 +1,4 @@
-discord
+discord~=1.0.1
 git+https://github.com/Rapptz/discord.py
+python_dotenv
+DiscordUtils~=1.2.5

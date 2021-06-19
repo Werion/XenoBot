@@ -5,7 +5,7 @@ import os
 from dotenv import load_dotenv
 
 __Author__ = 'Werion'
-__Version__ = 'Beta'
+__Version__ = '1.0.0'
 
 
 # Load Config
@@ -18,6 +18,7 @@ def get_prefix(client, message):
 
 
 client = commands.Bot(command_prefix=get_prefix)
+# client.remove_command('help')
 
 
 # Cogs loading/unloading --------------------------------------
@@ -89,16 +90,16 @@ async def on_command_error(ctx, error):
         print(error)
 
 
-#@client.event
-#async def on_member_join(member):
-    # user = client.get_user(member)
-    # print(f'{member} joined')
-    # await user.send(f'Witaj {member} na serwerze Meweria. Jestem autorskim botem który posłurzy gdybyś miał jakiś
-    # problem.')
+# @client.event
+# async def on_member_join(member):
+# user = client.get_user(member)
+# print(f'{member} joined')
+# await user.send(f'Witaj {member} na serwerze Meweria. Jestem autorskim botem który posłurzy gdybyś miał jakiś
+# problem.')
 
 
-#@client.event
-#async def on_member_remove(member):
+# @client.event
+# async def on_member_remove(member):
 #    print(f'{member} has left')
 
 
