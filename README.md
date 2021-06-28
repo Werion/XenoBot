@@ -20,3 +20,5 @@ Nie mam w planach hostować tego bota publicznie, lecz ty możesz samodzielnie g
 **Wszystkie rzeczy potrzebne do uruchomienia bota znajdują się w `requirements.txt`**
 
 **Wersja pythona która będzie działać na 100% będzie znajdować się w `runtime.txt`**
+
+**Jak mniej więcej zrobić by bot działał pisze na Wiki`**
