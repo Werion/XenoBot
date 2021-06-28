@@ -14,6 +14,16 @@ class Experimental(commands.Cog):
         print("> Experimental: Ready")
 
     # Commands
+    @commands.command(name="w_dm", pass_context=True)
+    async def w_dm(self, ctx, *, question):
+        user = self.client.get_user(240117268745289729)
+        await user.send(f'{ctx.author.mention}: {question}')
+        await ctx.send(f'`Wysłano pytanie do {user}: {question}`')
+
+    @commands.command(name="jd", pass_context=True)
+    async def jd(self, ctx):
+        await ctx.send(f'JD')
+
     @has_permissions(administrator=True)
     @commands.command(name="say", )
     async def say(self, arg: str, *, message: str):

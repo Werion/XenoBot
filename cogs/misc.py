@@ -15,16 +15,6 @@ class Miscellaneous(commands.Cog):
         print("> Miscellaneous: Ready")
 
     # Commands
-    @commands.command(name="w_dm", pass_context=True)
-    async def w_dm(self, ctx, *, question):
-        user = self.client.get_user(240117268745289729)
-        await user.send(f'{ctx.author.mention}: {question}')
-        await ctx.send(f'`Wysłano pytanie do {user}: {question}`')
-
-    @commands.command(name="jd", pass_context=True)
-    async def jd(self, ctx):
-        await ctx.send(f'JD')
-
     @tasks.loop(seconds=10)
     async def change_status(self):
         status = cycle(['Wersja 1.0.0'])
