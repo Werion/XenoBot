@@ -41,7 +41,7 @@ class Utility(commands.Cog):
         embed = discord.Embed(title="XenoBeep", description="Kolejny bot do różnych zadań", color=0xc0148c)
         embed.set_author(name="Autor: Werion")
         embed.set_thumbnail(
-            url='https://cdn.discordapp.com/avatars/646398082845769759/cc882961d69879bdd308add45dd38999.webp?size=128')
+            url=self.client.user.avatar_url)
         # embed.set_thumbnail(url="{}".format(member.avatar_url(self)))
         # embed.add_field(name="", value=f"1234", inline=False)
         embed.set_footer(text=f"Wersja {self.client.version}")
