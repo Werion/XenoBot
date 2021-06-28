@@ -7,12 +7,16 @@ Głównym założeniem bota są funkcje typu gry i  zabawy, nie planuję bawić 
 ## Jak często jest aktualizowany?
 Zadko, i losowo
 
+## Jakie komędy posiada? 
+**Komędy dzielą się na kilka kategori:**
+ - Administracyjne (domyślie wyłączone, w kodzie są zakomętowane)
+ - Zabawy (8 ball, Prawda czy Wyzwanie)
+ - Eksperymentalne (czyli mój tzw. pojemnik na różne losowe rzeczy, które nie zawsze są dobre. Radzę pozbyć się coga `experimental.py`)
+ - Narzędzia (clear, ping, about)
+
 ## Jak mogę dodać tego bota?
 Nie mam w planach hostować tego bota publicznie, lecz ty możesz samodzielnie go postawić na własnym hostingu!
 
-**Potrzebujesz:**
-- Python3 (oczywiście)
-- discord.py 
-`pip install discord`
-- Stworzonego bota na [discord.com/developers](http://discord.com/developers "discord.com/developers")
+**Wszystkie rzeczy potrzebne do uruchomienia bota znajdują się w `requirements.txt`**
 
+**Wersja pythona która będzie działać na 100% będzie znajdować się w `runtime.txt`**
