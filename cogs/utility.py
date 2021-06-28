@@ -44,7 +44,7 @@ class Utility(commands.Cog):
             url='https://cdn.discordapp.com/avatars/646398082845769759/cc882961d69879bdd308add45dd38999.webp?size=128')
         # embed.set_thumbnail(url="{}".format(member.avatar_url(self)))
         # embed.add_field(name="", value=f"1234", inline=False)
-        embed.set_footer(text="Wersja 1.0.0")
+        embed.set_footer(text=f"Wersja {self.client.version}")
         await ctx.send(embed=embed)
 
         # await client.send_message(channel, embed=embed)

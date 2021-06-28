@@ -14,6 +14,13 @@ class Experimental(commands.Cog):
         print("> Experimental: Ready")
 
     # Commands
+    @commands.command(name="error", pass_context=True)
+    async def error(self, ctx):
+        # It's entire purpose is to create an error
+
+        # var1 = 'Test'
+        await ctx.send(f'`{var1}`')
+
     @commands.command(name="w_dm", pass_context=True)
     async def w_dm(self, ctx, *, question):
         user = self.client.get_user(240117268745289729)

@@ -4,9 +4,6 @@ import json
 import os
 from dotenv import load_dotenv
 
-__Author__ = 'Werion'
-__Version__ = '1.0.0'
-
 
 # Load Config
 
@@ -17,15 +14,18 @@ def get_prefix(client, message):
     return prefixes[str(message.guild.id)]
 
 
-client = commands.Bot(command_prefix=get_prefix)
+client = commands.Bot(
+    command_prefix=get_prefix,
+    owner_id=os.getenv('BOT_OWNER')
+)
+client.version = "1.0.1"
 # client.remove_command('help')
-
 
 # Cogs loading/unloading --------------------------------------
 
 
 @client.command()
-@has_permissions(manage_guild=True)
+@commands.is_owner()
 async def load(ctx, extension):
     client.load_extension(f'cogs.{extension}')
     await ctx.send(f'`Loaded: {extension}`')
@@ -42,7 +42,7 @@ async def load_error(ctx, error):
 
 
 @client.command()
-@has_permissions(manage_guild=True)
+@commands.is_owner()
 async def unload(ctx, extension):
     client.unload_extension(f'cogs.{extension}')
     await ctx.send(f'`Unloaded: {extension}`')
@@ -54,7 +54,7 @@ async def unload_error(ctx, error):
 
 
 @client.command()
-@has_permissions(manage_guild=True)
+@commands.is_owner()
 async def reload(ctx, extension):
     client.unload_extension(f'cogs.{extension}')
     client.load_extension(f'cogs.{extension}')
@@ -69,7 +69,7 @@ async def reload_error(ctx, error):
 # Load every cog from ./cogs dir
 
 for filename in os.listdir('./cogs'):
-    if filename.endswith('.py'):
+    if filename.endswith('.py') and not filename.startswith("_"):
         client.load_extension(f'cogs.{filename[:-3]}')
 
 
@@ -88,6 +88,11 @@ async def on_command_error(ctx, error):
     if isinstance(error, commands.CommandNotFound):
         await ctx.send(f'`Nie poznaje tej komędy!`')
         print(error)
+    else:
+        print(f'Error was found !!! \n'
+              f'{error}')
+
+
 
 
 # @client.event
