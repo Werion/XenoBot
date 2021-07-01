@@ -18,7 +18,7 @@ client = commands.Bot(
     command_prefix=get_prefix,
     owner_id=os.getenv('BOT_OWNER')
 )
-client.version = "1.0.1"
+client.version = "1.0.2"
 # client.remove_command('help')
 
 # Cogs loading/unloading --------------------------------------
