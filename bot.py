@@ -18,7 +18,9 @@ client = commands.Bot(
     command_prefix=get_prefix,
     owner_id=os.getenv('BOT_OWNER')
 )
-client.version = "1.0.2"
+client.version = "1.0.3"
+
+
 # client.remove_command('help')
 
 # Cogs loading/unloading --------------------------------------
@@ -93,8 +95,6 @@ async def on_command_error(ctx, error):
               f'{error}')
 
 
-
-
 # @client.event
 # async def on_member_join(member):
 # user = client.get_user(member)
@@ -158,14 +158,14 @@ def path_exist_check():
 
 # END ----------------------------------------------------------------------
 # | Disable certain command on certain server (guild) | START --------------
-commandsEnabled = {}
+# commandsEnabled = {}
 
 
-@client.event
-async def on_guild_join(guild):
-    commandsEnabled[str(guild.id)] = {}
-    for cmd in client.commands:
-        commandsEnabled[str(guild.id)][cmd.name] = True
+# @client.event
+# async def on_guild_join(guild):
+#     commandsEnabled[str(guild.id)] = {}
+#     for cmd in client.commands:
+#         commandsEnabled[str(guild.id)][cmd.name] = True
 
 
 # @client.command()
