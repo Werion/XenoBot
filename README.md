@@ -25,7 +25,7 @@ Zadko, i losowo
 
 # Ekonomia (alfa)
 > System nie jest jeszcze w 100% gotowy, zalecane jest wyłączenie modułu `vault.py` znajdującego się w folderze `cogs` (czyli dodaj przed nazwą coga tzw. podłogę: `_` )
-## Od teraz urzytkownicy mogą zarabiać walutę serwera uzywając XenoBota!
+## Od teraz użytkownicy mogą zarabiać walutę serwera uzywając XenoBota!
 Pierwsza wersja systemu (alpha) będzie pozwalać tylko na transakcje w bocie, czyli jedynie XenoBot będzie miał dostęp do zasobów `vault.json` i jedynie jego komędy będą mogły modyfikować dane
 
 W teori da sie wpływać na dane importując `vault`
