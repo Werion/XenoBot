@@ -18,7 +18,7 @@ client = commands.Bot(
     command_prefix=get_prefix,
     owner_id=os.getenv('BOT_OWNER')
 )
-client.version = "1.0.3"
+client.version = "1.0.4"
 
 
 # client.remove_command('help')

@@ -1,7 +1,9 @@
+import discord
 from discord.ext import commands
 from discord.ext.commands import has_permissions, MissingPermissions
 import random
 import time
+from cogs import vault
 
 
 class Experimental(commands.Cog):
@@ -30,6 +32,8 @@ class Experimental(commands.Cog):
     @commands.command(name="jd", pass_context=True)
     async def jd(self, ctx):
         await ctx.send(f'JD')
+
+
 
     @has_permissions(administrator=True)
     @commands.command(name="say", )

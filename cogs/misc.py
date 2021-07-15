@@ -28,7 +28,7 @@ class Miscellaneous(commands.Cog):
         command = self.client.get_command(command)
 
         if command is None:
-            await ctx.send("I can't find a command with that name!")
+            await ctx.send(f"Cannot find {command}!")
 
         elif ctx.command == command:
             await ctx.send("You cannot disable this command.")

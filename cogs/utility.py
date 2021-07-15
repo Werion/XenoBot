@@ -6,12 +6,12 @@ from discord.ext.commands import has_permissions, MissingPermissions
 class Utility(commands.Cog):
     def __init__(self, client):
         self.client = client
-
         print("Init utility")
 
     # Events
     @commands.Cog.listener()
     async def on_ready(self):
+        print(f'Bot avatar: {self.client.user.avatar_url}')
         print("> Utility module: Ready")
 
     # Commands
@@ -37,14 +37,14 @@ class Utility(commands.Cog):
 
     @commands.command(pass_context=True)
     async def about(self, ctx, ):  # member: discord.Member):
-        # avatar = discord.User.default_avatar_url
+        avatar = discord.User.default_avatar_url
         embed = discord.Embed(title="XenoBeep", description="Kolejny bot do różnych zadań", color=0xc0148c)
         embed.set_author(name="Autor: Werion")
         embed.set_thumbnail(
             url=self.client.user.avatar_url)
         # embed.set_thumbnail(url="{}".format(member.avatar_url(self)))
         # embed.add_field(name="", value=f"1234", inline=False)
-        embed.set_footer(text=f"Wersja {self.client.version}")
+        embed.set_footer(text=f'Wersja {self.client.version}')
         await ctx.send(embed=embed)
 
         # await client.send_message(channel, embed=embed)
