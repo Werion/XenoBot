@@ -33,8 +33,6 @@ class Experimental(commands.Cog):
     async def jd(self, ctx):
         await ctx.send(f'JD')
 
-
-
     @has_permissions(administrator=True)
     @commands.command(name="say", )
     async def say(self, arg: str, *, message: str):

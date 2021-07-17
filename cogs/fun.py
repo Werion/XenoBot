@@ -78,10 +78,9 @@ class Fun(commands.Cog):
         prize = count1 * self.lotto_json['1'] + count2 * self.lotto_json['2'] + count3 * self.lotto_json['3'] + count4 * \
                 self.lotto_json['4'] + count5 * self.lotto_json['5'] + count6 * self.lotto_json['6']
 
-        # data = vault.load_data()
-        # user = ctx.message.author.id
-        # server = ctx.message.guild.id
-        # vault.add_data(userID=user, serverID=server, mode="Wallet", amount=prize)
+        user = ctx.message.author.id
+        server = ctx.message.guild.id
+        vault.add_data(userID=user, serverID=server, mode="Wallet", amount=prize)
         # Debug shit
         # await ctx.send(f'`DEBUG:'
         #                f'{lotto}\n'

@@ -1,29 +1,29 @@
 # XenoBot
-> Aka bot przeznacony do ogólnego użytku
+> This branch conains a development build of 1.1 version of XenoBeep<br/>
+> It is not done yet, so use it on your own risk<br/>
+> I am __not__ giving any support if it breaks for you!
 
-## O co chodzi z tym botem?
-Głównym założeniem bota są funkcje typu gry i  zabawy, nie planuję bawić się w funkje administracyjne, od tego jest już wiele botów które radzą sobie lepiej.
+## What is all about this bot?
+The main goal of this bot are functions like games and some other fun stuff. I don't have any plans right now to add any administrative functions to it, but i might change my mind, for now there are many other bots that are more suited for this.
 
-## Jak często jest aktualizowany?
-Zadko, i losowo
+## How frequent it is updated?
+Rarely, and randomly
 
-## Jakie komędy posiada? 
-**Komędy dzielą się na kilka kategori:**
- - Administracyjne (domyślie wyłączone, w kodzie są zakomętowane)
- - Zabawy (8 ball, Prawda czy Wyzwanie, Lotto)
- - Eksperymentalne (czyli mój tzw. pojemnik na różne losowe rzeczy, które nie zawsze są dobre. Radzę pozbyć się coga `experimental.py` albo dodać na jego początku tzw. podłogę => `_` )
- - Narzędzia (clear, ping, about)
+## What commands does it have? 
+**The commands are divided into several categories:**
+ - Administrative (disabled by default, they are comented out in code)
+ - Fun (8 ball, Truth or Dare, Lotto, but kinda lame)
+ - Experimental (aka my container for various random stuff, with are not always... good. I recomend getting rid of this cog `experimental.py` or add at its beginning tzw. the so-called the floor => `_` )
+ - Tools (clear, ping, about)
 
-# Jak mogę dodać tego bota?
->Nie mam w planach hostować tego bota publicznie, lecz ty możesz samodzielnie go postawić na własnym hostingu!
+# How can I add this bot?
+>I don't plan to host this bot publicly, but you can put it on your own hosting! (if u want for some reason) 
 
-**Wszystkie rzeczy potrzebne do uruchomienia bota znajdują się w `requirements.txt`**
+**All the things needed to run the bot are in `requirements.txt`**<br/>
+**A python version that will work 100% will be in `runtime.txt`**<br/>
+**How to host it is described on the Wiki (but it is in Polish. Wiki will be updated after the release of 1.1)**<br/>
 
-**Wersja pythona która będzie działać na 100% będzie znajdować się w `runtime.txt`**
-
-**Jak mniej więcej zrobić by bot działał pisze na Wiki**
-
-# Ekonomia (alfa)
+# Economy (alfa) (not bothering translating it, because it's kinda lame in it's current state)
 > System nie jest jeszcze w 100% gotowy, zalecane jest wyłączenie modułu `vault.py` znajdującego się w folderze `cogs` (czyli dodaj przed nazwą coga tzw. podłogę: `_` )
 ## Od teraz użytkownicy mogą zarabiać walutę serwera uzywając XenoBota!
 Pierwsza wersja systemu (alpha) będzie pozwalać tylko na transakcje w bocie, czyli jedynie XenoBot będzie miał dostęp do zasobów `vault.json` i jedynie jego komędy będą mogły modyfikować dane

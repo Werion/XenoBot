@@ -1,0 +1,49 @@
+{
+  "errors": {
+    "negative_value": "Wartość nie może być negatywna!",
+    "not_enough_money": "Nie masz wystaraczającej ilości pieniędzy",
+    "invalid_money_too_much": "Nie masz tylu pieniędzy!",
+    "command_not_found": "Nie poznaje tej komędy"
+  },
+  "lang_currently_using": "Obecnie używany język: ",
+  "list_of_lang": "Lista możliwych języków: ",
+  "invalid_lang": "Wybrałeś nie poprawny język! Sprawdź listę dostępnych języków wpisując tą samą komedę tylko bez argumentów",
+  "changed_lang": "Zmieniono język na: ",
+  "set_vault_to": {
+    "1": "Zmieniono użytkownikowi ",
+    "2": " liczbę pieniędzy na ",
+    "3": " w jego ",
+    "Bank": "banku",
+    "Wallet": "portfelu"
+   },
+  "add_vault": {
+    "1": "Dodano do uzytkownika",
+    "2": "do jego",
+    "Bank": "banku",
+    "Wallet": "portfela"
+  },
+  "sub_vault": {
+    "1": "Zabrano od używkownika",
+    "2": "z jego",
+    "Bank": "banku",
+    "Wallet": "portfela"
+  },
+  "balance": {
+    "user": "ID użytkownika:",
+    "guild": "ID gildi/serwera:",
+    "bank": "Saldo Bankku Użytkownika:",
+    "wallet": "Saldo Portfela Użytkownika:"
+  },
+  "deposit": {
+    "1": "Złożono",
+    "2": "do Banku"
+  },
+  "withdraw": {
+    "1": "Wycofano",
+    "2": "do Portflela"
+  },
+  "load": "Załadowano:",
+  "unload": "Rozładowano:",
+  "reload": "Przeładowano:",
+  "changed_prefix": "Zmieniono prefix na:"
+}

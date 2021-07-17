@@ -1,0 +1,50 @@
+{
+  "errors": {
+    "negative_value": "Value cannot be negative!",
+    "not_enough_money": "U don't have enough money",
+    "invalid_money_too_much": "U don't have that much money!",
+    "command_not_found": "I don't recognize this command",
+    "error_found": "Error was found !!! \n"
+  },
+  "lang_currently_using": "Currently used language:",
+  "list_of_lang": "List of available languages:",
+  "invalid_lang": "You picked invalid language! Check the list of available languages by typing the same command but without any arguments",
+  "changed_lang": "Changed language to:",
+  "set_vault_to": {
+    "1": "Changed the amount of",
+    "2": "cash to",
+    "3": "in his",
+    "Bank": "bank",
+    "Wallet": "wallet"
+  },
+  "add_vault": {
+    "1": "Added to",
+    "2": "to his",
+    "Bank": "bank",
+    "Wallet": "wallet"
+  },
+  "sub_vault": {
+    "1": "Taken away from user",
+    "2": "from his",
+    "Bank": "bank",
+    "Wallet": "wallet"
+  },
+  "balance": {
+    "user": "User ID:",
+    "guild": "Guild ID:",
+    "bank": "User Bank Balance:",
+    "wallet": "User Wallet Balance:"
+  },
+  "deposit": {
+    "1": "Deposited",
+    "2": "to Bank"
+  },
+  "withdraw": {
+    "1": "Withdrew",
+    "2": "to Wallet"
+  },
+  "load": "Loaded:",
+  "unload": "Unloaded:",
+  "reload": "Reloaded:",
+  "changed_prefix": "Changed prefix to:"
+}

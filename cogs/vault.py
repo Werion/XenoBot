@@ -2,6 +2,7 @@ import discord
 from discord.ext import commands
 from discord.ext.commands import has_permissions, MissingPermissions
 import json
+from utils import lang
 
 
 def load_data():
@@ -15,6 +16,26 @@ def write_data(new_data, serverID, userID, mode):
     data["Economy"][str(serverID)][str(userID)][str(mode.title())] = int(new_data)
     with open('vault.json', 'w', encoding='utf-8') as f:
         json.dump(data, f, indent=4)
+
+
+def write_lang_data(serverID, mode):
+    data = load_data()
+    data["Language"][str(serverID)] = mode
+    with open('vault.json', 'w', encoding='utf-8') as f:
+        json.dump(data, f, indent=4)
+
+
+def load_lang_data():
+    data = load_data()
+    language = data["Language"]
+    return language
+
+
+def guild_lang(guild):
+    guild = str(guild)
+    data = load_lang_data()
+    language = data[str(guild)]
+    return language
 
 
 def add_user(serverID, userID):
@@ -79,6 +100,11 @@ class Vault(commands.Cog):
             data['Economy'][str(guild.id)] = {}
             with open("vault.json", "w") as f:
                 json.dump(data, f, indent=4)
+        if not str(guild.id) in self.vault["Language"]:
+            data = load_data()
+            data['Language'][str(guild.id)] = "pl_PL"
+            with open("vault.json", "w") as f:
+                json.dump(data, f, indent=4)
 
     # @commands.Cog.listener()
     # async def on_member_join(self, member):
@@ -93,10 +119,12 @@ class Vault(commands.Cog):
     @commands.command(name="setvault", pass_context=True)
     async def set_vault(self, ctx, amount, mode):
         user = ctx.message.author.id
+        user_name = ctx.message.author
         server = ctx.message.guild.id
+        dictionary = lang.get(guild_lang(server))
         write_data(new_data=int(amount), serverID=str(server), userID=str(user), mode=str(mode))
-        await ctx.send(f'Wrote to {user}\n'
-                       f'{amount} to {mode.title()}')
+        await ctx.send(f"{dictionary['set_vault_to']['1']} {user_name} {dictionary['set_vault_to']['2']} "
+                       f"{amount} {dictionary['set_vault_to']['3']} {dictionary['set_vault_to'][str(mode.title())]}")
 
     @set_vault.error
     async def set_vault_error(self, ctx, error):
@@ -107,9 +135,10 @@ class Vault(commands.Cog):
     async def add_vault(self, ctx, amount, mode):
         user = ctx.message.author.id
         server = ctx.message.guild.id
+        dictionary = lang.get(guild_lang(server))
         add_data(amount=int(amount), serverID=str(server), userID=str(user), mode=str(mode))
-        await ctx.send(f'Added to {user}\n'
-                       f'{amount} to {mode.title()}')
+        await ctx.send(f"{dictionary['add_vault']['1']} {user}\n"
+                       f"{amount} {dictionary['add_vault']['2']} {dictionary['add_vault'][str(mode.title())]}")
 
     @add_vault.error
     async def add_vault_error(self, ctx, error):
@@ -120,9 +149,10 @@ class Vault(commands.Cog):
     async def sub_vault(self, ctx, amount, mode):
         user = ctx.message.author.id
         server = ctx.message.guild.id
+        dictionary = lang.get(guild_lang(server))
         subtract_data(userID=user, serverID=server, mode=mode, amount=amount)
-        await ctx.send(f'Taken from {user}\n'
-                       f'{amount} from {mode.title()}')
+        await ctx.send(f"{dictionary['sub_vault']['1']} {user}\n"
+                       f"{amount} {dictionary['sub_vault']['2']} {dictionary['sub_vault'][str(mode.title())]}")
 
     @sub_vault.error
     async def sub_vault_error(self, ctx, error):
@@ -132,16 +162,17 @@ class Vault(commands.Cog):
     async def balance(self, ctx):
         user = ctx.message.author.id
         server = ctx.message.guild.id
+        dictionary = lang.get(guild_lang(server))
         self.vault = load_data()
         if not str(user) in self.vault["Economy"][str(server)]:
             add_user(serverID=server, userID=user)
             self.vault = load_data()
         vault_bank = self.vault["Economy"][str(server)][str(user)]["Bank"]
         vault_wallet = self.vault["Economy"][str(server)][str(user)]["Wallet"]
-        await ctx.send(f"`User Id: {user}\n"
-                       f"Server Id: {server}\n"
-                       f"User Wallet Balance: {vault_wallet}\n"
-                       f"User Bank Balance: {vault_bank}`")
+        await ctx.send(f"`{dictionary['balance']['user']} {user}\n"
+                       f"{dictionary['balance']['guild']} {server}\n"
+                       f"{dictionary['balance']['bank']} {vault_bank}\n"
+                       f"{dictionary['balance']['wallet']} {vault_wallet}`")
 
     @balance.error
     async def balance_error(self, ctx, error):
@@ -151,6 +182,7 @@ class Vault(commands.Cog):
     async def deposit(self, ctx, amount=0):
         user = ctx.message.author.id
         server = ctx.message.guild.id
+        dictionary = lang.get(guild_lang(server))
         self.vault = load_data()
         if not str(user) in self.vault["Economy"][str(server)]:
             add_user(serverID=server, userID=user)
@@ -159,18 +191,18 @@ class Vault(commands.Cog):
             amount = self.vault["Economy"][str(server)][str(user)]["Wallet"]
             self.vault = load_data()
         if amount < 0:
-            await ctx.send(f"Value cannot be negative!")
+            await ctx.send(f"{dictionary['errors']['negative_value']}")
             return
         if int(self.vault["Economy"][str(server)][str(user)]["Wallet"]) is 0:
-            await ctx.send(f"U don't have enough money")
+            await ctx.send(f"{dictionary['errors']['not_enough_money']}")
             return
         if int(self.vault["Economy"][str(server)][str(user)]["Wallet"]) < amount:
-            await ctx.send(f"U don't have that much!")
+            await ctx.send(f"{dictionary['errors']['invalid_money_too_much']}")
             return
 
         add_data(userID=user, serverID=server, mode="Bank", amount=amount)
         subtract_data(userID=user, serverID=server, mode="Wallet", amount=amount)
-        await ctx.send(f"Deposited {amount} to Bank")
+        await ctx.send(f"{dictionary['deposit']['1']} {amount} {dictionary['deposit']['2']}")
 
     @deposit.error
     async def deposit_error(self, ctx, error):
@@ -180,6 +212,7 @@ class Vault(commands.Cog):
     async def withdraw(self, ctx, amount=0):
         user = ctx.message.author.id
         server = ctx.message.guild.id
+        dictionary = lang.get(guild_lang(server))
         self.vault = load_data()
         if not str(user) in self.vault["Economy"][str(server)]:
             add_user(serverID=server, userID=user)
@@ -188,18 +221,18 @@ class Vault(commands.Cog):
             amount = self.vault["Economy"][str(server)][str(user)]["Bank"]
             self.vault = load_data()
         if amount < 0:
-            await ctx.send(f"Value cannot be negative!")
+            await ctx.send(f"{dictionary['errors']['negative_value']}")
             return
         if int(self.vault["Economy"][str(server)][str(user)]["Bank"]) is 0:
-            await ctx.send(f"U don't have enough money")
+            await ctx.send(f"{dictionary['errors']['not_enough_money']}")
             return
         if int(self.vault["Economy"][str(server)][str(user)]["Bank"]) < amount:
-            await ctx.send(f"U don't have that much!")
+            await ctx.send(f"{dictionary['errors']['invalid_money_too_much']}")
             return
 
         add_data(userID=user, serverID=server, mode="Wallet", amount=amount)
         subtract_data(userID=user, serverID=server, mode="Bank", amount=amount)
-        await ctx.send(f"Withdrew {amount} to Wallet")
+        await ctx.send(f"{dictionary['withdraw']['1']} {amount} {dictionary['withdraw']['2']}")
 
 
 def setup(client):
