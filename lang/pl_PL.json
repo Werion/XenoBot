@@ -3,7 +3,14 @@
     "negative_value": "Wartość nie może być negatywna!",
     "not_enough_money": "Nie masz wystaraczającej ilości pieniędzy",
     "invalid_money_too_much": "Nie masz tylu pieniędzy!",
-    "command_not_found": "Nie poznaje tej komędy"
+    "command_not_found": "Nie poznaje tej komędy",
+    "error_found": "Znaleziono błąd !!! \n",
+    "missing_permissions": "Przepraszamy, ale nie masz uprawnień, aby to zrobić!",
+    "cannot_find": "Nie mogę znaleść",
+    "cannot_disable": "You cannot disable this command."
+  },
+  "cmd_usage": {
+    "8ball": "Użycie: 8ball + [pytanie]"
   },
   "lang_currently_using": "Obecnie używany język: ",
   "list_of_lang": "Lista możliwych języków: ",
@@ -15,7 +22,7 @@
     "3": " w jego ",
     "Bank": "banku",
     "Wallet": "portfelu"
-   },
+  },
   "add_vault": {
     "1": "Dodano do uzytkownika",
     "2": "do jego",
@@ -45,5 +52,35 @@
   "load": "Załadowano:",
   "unload": "Rozładowano:",
   "reload": "Przeładowano:",
-  "changed_prefix": "Zmieniono prefix na:"
+  "changed_prefix": "Zmieniono prefix na:",
+  "8ball": [
+    "To pewne.",
+    "Tak jest zdecydowanie.",
+    "Bez wątpienia.",
+    "Tak - napewno",
+    "Możesz na tym polegać.",
+    "Tak, jak widzę, tak.",
+    "Najprawdopodobniej.",
+    "Chyba tak.",
+    "Tak.",
+    "Znaki wskazują na tak.",
+    "Zdania ekspertow sa podzielone.",
+    "Odpowiedź mglista, spróbuj ponownie.",
+    "Zapytaj ponownie później.",
+    "Lepiej ci teraz nie mówić.",
+    "Nie można teraz przewidzieć.",
+    "Skoncentruj się i zapytaj ponownie.",
+    "Nie licz na to.",
+    "Moja odpowiedź brzmi nie.",
+    "Moje źródła mówią nie.",
+    "Perspektywa niezbyt dobra.",
+    "Bardzo wątpliwe."
+  ],
+  "lotto": "Wygrałeś",
+  "toggle": {
+    "enabled": "włączona",
+    "disabled": "wyłączona",
+    "1": "Komęda",
+    "2": "została"
+  }
 }

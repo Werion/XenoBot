@@ -4,7 +4,13 @@
     "not_enough_money": "U don't have enough money",
     "invalid_money_too_much": "U don't have that much money!",
     "command_not_found": "I don't recognize this command",
-    "error_found": "Error was found !!! \n"
+    "error_found": "Error was found !!! \n",
+    "missing_permissions": "Sorry, but you do not have permissions to do that!",
+    "cannot_find": "Cannot find",
+    "cannot_disable": "You cannot disable this command."
+  },
+  "cmd_usage": {
+    "8ball": "Usage: 8ball + [question]"
   },
   "lang_currently_using": "Currently used language:",
   "list_of_lang": "List of available languages:",
@@ -46,5 +52,35 @@
   "load": "Loaded:",
   "unload": "Unloaded:",
   "reload": "Reloaded:",
-  "changed_prefix": "Changed prefix to:"
+  "changed_prefix": "Changed prefix to:",
+  "8ball": [
+    "It is certain.",
+    "It definitely is.",
+    "Without a doubt.",
+    "Yes, for sure",
+    "You can rely on it.",
+    "Yes, as I can see, yes.",
+    "Most likely .",
+    "I think so.",
+    "Yes.",
+    "The signs indicate yes.",
+    "The experts' opinions are divided..",
+    "Hazy answer, try again.",
+    "Ask again later .",
+    "Better not to tell you now.",
+    "Can't predict now.",
+    "Concentrate and ask again.",
+    "Do not count on it.",
+    "My answer is no.",
+    "My sources say no.",
+    "Perspective not very good.",
+    "Very doubtful."
+  ],
+  "lotto": "U won",
+  "toggle": {
+    "enabled": "enabled",
+    "disabled": "disabled",
+    "1": "Command",
+    "2": "has been"
+  }
 }

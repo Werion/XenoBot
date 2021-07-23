@@ -3,6 +3,8 @@ from discord.ext.commands import has_permissions, MissingPermissions
 import json
 import os
 from dotenv import load_dotenv
+from utils import lang
+from cogs import vault
 
 
 # Load Config
@@ -18,7 +20,7 @@ client = commands.Bot(
     command_prefix=get_prefix,
     owner_id=os.getenv('BOT_OWNER')
 )
-client.version = "1.1-dev"
+client.version = "1.1-dev.2"
 
 
 # client.remove_command('help')
@@ -29,8 +31,10 @@ client.version = "1.1-dev"
 @client.command()
 @commands.is_owner()
 async def load(ctx, extension):
+    guild = ctx.message.guild.id
+    dictionary = lang.get(vault.guild_lang(guild))
     client.load_extension(f'cogs.{extension}')
-    await ctx.send(f'`Loaded: {extension}`')
+    await ctx.send(f"{dictionary['load']} {extension}")
 
 
 @load.error
@@ -46,8 +50,10 @@ async def load_error(ctx, error):
 @client.command()
 @commands.is_owner()
 async def unload(ctx, extension):
+    guild = ctx.message.guild.id
+    dictionary = lang.get(vault.guild_lang(guild))
     client.unload_extension(f'cogs.{extension}')
-    await ctx.send(f'`Unloaded: {extension}`')
+    await ctx.send(f"{dictionary['unload']} {extension}")
 
 
 @unload.error
@@ -58,9 +64,11 @@ async def unload_error(ctx, error):
 @client.command()
 @commands.is_owner()
 async def reload(ctx, extension):
+    guild = ctx.message.guild.id
+    dictionary = lang.get(vault.guild_lang(guild))
     client.unload_extension(f'cogs.{extension}')
     client.load_extension(f'cogs.{extension}')
-    await ctx.send(f'`Reloaded: {extension}`')
+    await ctx.send(f"{dictionary['reload']} {extension}")
 
 
 @reload.error
@@ -88,7 +96,9 @@ async def on_ready():
 @client.event
 async def on_command_error(ctx, error):
     if isinstance(error, commands.CommandNotFound):
-        await ctx.send(f'`Nie poznaje tej komędy!`')
+        guild = ctx.message.guild.id
+        dictionary = lang.get(vault.guild_lang(guild))
+        await ctx.send(f"`{dictionary['errors']['command_not_found']}`")
         print(error)
     else:
         print(f'Error was found !!! \n'
@@ -137,6 +147,8 @@ async def on_guild_remove(guild):
 @client.command()
 @has_permissions(administrator=True)
 async def change_prefix(ctx, prefix):
+    guild = ctx.message.guild.id
+    dictionary = lang.get(vault.guild_lang(guild))
     with open('prefixes.json', 'r') as f:
         prefixes = json.load(f)
 
@@ -145,7 +157,7 @@ async def change_prefix(ctx, prefix):
     with open('prefixes.json', 'w') as f:
         json.dump(prefixes, f, indent=4)
 
-    await ctx.send(f'Zmieniono prefix na {prefix}')
+    await ctx.send(f"{dictionary['changed_prefix']} {prefix}")
 
 
 # | Create prefix.json if there is none | START ----------------------------

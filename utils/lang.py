@@ -34,6 +34,10 @@ def get(mode):
         'withdraw': lang['withdraw'],
         'load': lang['load'],
         'unload': lang['unload'],
-        'reload': lang['reload']
+        'reload': lang['reload'],
+        '8ball': lang['8ball'],
+        'cmd_usage': lang['cmd_usage'],
+        'lotto': lang['lotto'],
+        'toggle': lang['toggle']
     }
     return dictionary
