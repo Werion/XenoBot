@@ -50,12 +50,12 @@ class Fun(commands.Cog):
         lotto = [random.randint(1, 40) for a in range(6)]
 
         # Check the amounts of certain number in lotto variable
-        count1 = sum(map(lambda x: x == 1, lotto))  # How many ones
-        count2 = sum(map(lambda x: x == 2, lotto))  # How many twos
-        count3 = sum(map(lambda x: x == 3, lotto))  # How many threes
-        count4 = sum(map(lambda x: x == 4, lotto))  # etc ....
-        count5 = sum(map(lambda x: x == 5, lotto))  # etc ....
-        count6 = sum(map(lambda x: x == 6, lotto))  # etc ....
+        count1 = sum(map(lambda x: x == 1, lotto))
+        count2 = sum(map(lambda x: x == 2, lotto))
+        count3 = sum(map(lambda x: x == 3, lotto))
+        count4 = sum(map(lambda x: x == 4, lotto))
+        count6 = sum(map(lambda x: x == 6, lotto))
+        count5 = sum(map(lambda x: x == 5, lotto))
 
         # Shit way to sum all the values into one
         prize = count1 * self.lotto_json['1'] + count2 * self.lotto_json['2'] + count3 * self.lotto_json['3'] + count4 * \
