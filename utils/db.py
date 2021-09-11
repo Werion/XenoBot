@@ -1,15 +1,26 @@
 # In making 
 import mysql.connector
+import os
+from dotenv import load_dotenv
 
-def connect(user, password, host, database)
-    # Connect to DB
-    cnx = cnx = mysql.connector.connect(user=user, password=password,
-                              host=host,
-                              database=database)
-    cnx.close()
+
+# db = mysql.connector.connect(
+#     host=os.getenv('HOST'),
+#     user=os.getenv('DB_USER'),
+#     password=os.getenv('PASSWORD')
+# )
+
+
+db = mysql.connector.connect(
+    host="127.0.0.1",
+    user="root",
+    password=""
+)
+
 
 def get():
-    # Get data from DB
+    print(db)
+
 
 if __name__ == '__main__':
-    return 0
+    get()
